@@ -15,6 +15,17 @@ class PaytmWalletManager extends Manager implements Contracts\Factory{
 		return $this->driver($driver);
 	}
 
+	/// added scheduled driver
+	protected function createScheduleDriver(){
+		$this->config = $this->app['config']['services.paytm-wallet'];
+
+		return $this->buildProvider(
+			'Anand\LaravelPaytmWallet\Providers\SchedulePaymentProvider',
+			$this->config
+			);
+	}
+
+
 	protected function createReceiveDriver(){
 		$this->config = $this->app['config']['services.paytm-wallet'];
 

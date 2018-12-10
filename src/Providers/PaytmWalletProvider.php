@@ -31,6 +31,7 @@ class PaytmWalletProvider implements ProviderContract {
 			$domain = 'securegw-stage.paytm.in';
 		}
 		$this->paytm_txn_url = 'https://'.$domain.'/theia/processTransaction';
+		$this->paytm_sub_txn_url = 'https://'.$domain.'/theia/processTransaction';
 		$this->paytm_txn_status_url = 'https://'.$domain.'/merchant-status/getTxnStatus';
 		$this->paytm_refund_url = 'https://'.$domain.'/refund/HANDLER_INTERNAL/REFUND';
 		$this->paytm_refund_status_url = 'https://'.$domain.'/refund/HANDLER_INTERNAL/getRefundStatus';
