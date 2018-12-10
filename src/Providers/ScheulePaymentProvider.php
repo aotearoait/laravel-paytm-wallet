@@ -13,9 +13,10 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
 
     public function prepare($params = array()){
 		$defaults = [
+            'request_type' => 'DEFAULT',
 			'order' => NULL,
 			'user' => NULL,
-			//'amount' => NULL,
+			'amount' => NULL,
             'callback_url' => NULL,
             'email' => NULL,
             'mobile_number' => NULL,
@@ -53,26 +54,33 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
 
 	private function beginTransaction(){
 		$params = [
-			'REQUEST_TYPE' => 'SUBSCRIBE',
+            'REQUEST_TYPE' => $this->parameters['request_type'],
 			'MID' => $this->merchant_id,
 			'ORDER_ID' => $this->parameters['order'],
 			'CUST_ID' => $this->parameters['user'],
 			'INDUSTRY_TYPE_ID' => $this->industry_type,
 			'CHANNEL_ID' => $this->channel,
-			//'TXN_AMOUNT' => $this->parameters['amount'],
+			'TXN_AMOUNT' => $this->parameters['amount'],
             'WEBSITE' => $this->merchant_website,
-            'SUBS_SERVICE_ID' => $this->parameters['subscription_id'], /// Subscription ID ALPHANUMERIC
-            'SUBS_AMOUNT_TYPE' => $this->parameters['subscription_type'], /// FIXED or VARIABLE,
-            'SUBS_FREQUENCY _UNIT' => $this->parameters['subscription_frequency'], /// Subscription frequecy DAY / MONTH / YEAR
-            'SUBS_ENABLE_RETRY' => 1, /// Auto retry failed transaction
-            'SUBS_EXPIRY_DATE' => $this->parameters['subscription_expiry'], /// YYYY-MM-DD
-            'SUBS_MAX_AMOUNT' => $this->parameters['subscription_maximum_payment'], /// Maximum amount of a single payment
-            'SUBS_START_DATE' => $this->parameters['subscription_start_date'], /// YYYY-MM-DD used to specify first payment, can be in future for trial scenarios
-            'SUBS_GRACE_DAYS' => $this->parameters['subscription_grace_days'],
             'CALLBACK_URL' => $this->parameters['callback_url'],
             'MOBILE_NO' => $this->parameters['mobile_number'],
             'EMAIL' => $this->parameters['email'],
-		];
+        ];
+        if($this->parameters['request_type'] == 'SUBSCRIPTION' || $this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
+            $subscription_params = [
+                'SUBS_SERVICE_ID' => $this->parameters['subscription_id'], /// Subscription ID ALPHANUMERIC
+                'SUBS_AMOUNT_TYPE' => $this->parameters['subscription_type'], /// FIXED or VARIABLE,
+                'SUBS_FREQUENCY _UNIT' => $this->parameters['subscription_frequency'], /// Subscription frequecy DAY / MONTH / YEAR
+                'SUBS_ENABLE_RETRY' => 1, /// Auto retry failed transaction
+                'SUBS_EXPIRY_DATE' => $this->parameters['subscription_expiry'], /// YYYY-MM-DD
+                'SUBS_MAX_AMOUNT' => $this->parameters['subscription_maximum_payment'], /// Maximum amount of a single payment
+                'SUBS_START_DATE' => $this->parameters['subscription_start_date'], /// YYYY-MM-DD used to specify first payment, can be in future for trial scenarios
+                'SUBS_GRACE_DAYS' => $this->parameters['subscription_grace_days'],
+            ];
+            array_push($params,$subscription_params);
+
+        }
+
 		return view('paytmwallet::form')->with('view', $this->view)->with('params', $params)->with('txn_url', $this->paytm_txn_url)->with('checkSum', getChecksumFromArray($params, $this->merchant_key));
 	}
 

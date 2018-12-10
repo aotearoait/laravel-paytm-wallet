@@ -13,12 +13,20 @@ class ReceivePaymentProvider extends PaytmWalletProvider{
 
     public function prepare($params = array()){
 		$defaults = [
+			'request_type' => 'DEFAULT',
 			'order' => NULL,
 			'user' => NULL,
 			'amount' => NULL,
             'callback_url' => NULL,
             'email' => NULL,
-            'mobile_number' => NULL,
+			'mobile_number' => NULL,
+			'subscription_id' => NULL,
+			'subscription_type' => NULL,
+			'subscription_frequency' => NULL,
+			'subscription_expiry' => NULL,
+			'subscription_maximum_payment' => NULL,
+			'subscription_start_date' => NULL,
+			'subscription_grace_days' => NULL
 		];
 
 		$_p = array_merge($defaults, $params);
@@ -51,7 +59,7 @@ class ReceivePaymentProvider extends PaytmWalletProvider{
 
 	private function beginTransaction(){
 		$params = [
-			'REQUEST_TYPE' => 'DEFAULT',
+			'REQUEST_TYPE' => $this->parameters['request_type'],
 			'MID' => $this->merchant_id,
 			'ORDER_ID' => $this->parameters['order'],
 			'CUST_ID' => $this->parameters['user'],
