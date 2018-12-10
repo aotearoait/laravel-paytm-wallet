@@ -1,12 +1,12 @@
 {
-    "name": "anandsiddharth/laravel-paytm-wallet",
-    "description": "Integrate paytm wallet easily with this package. This package uses official Paytm PHP SDK's",
+    "name": "aotearoait/laravel-paytm-wallet",
+    "description": "Integrate paytm wallet easily with this package. This package uses official Paytm PHP SDK's and includes Subscription Service",
     "license": "MIT",
     "keywords": ["paytm wallet", "laravel"],
     "authors": [
         {
-            "name": "Anand Siddharth",
-            "email": "anandsiddharth21@gmail.com"
+            "name": "Joel Ireland",
+            "email": "ireland.joel@gmail.com"
         }
     ],
     "minimum-stability": "dev",
