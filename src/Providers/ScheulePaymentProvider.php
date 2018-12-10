@@ -15,7 +15,7 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
 		$defaults = [
 			'order' => NULL,
 			'user' => NULL,
-			'amount' => NULL,
+			//'amount' => NULL,
             'callback_url' => NULL,
             'email' => NULL,
             'mobile_number' => NULL,
