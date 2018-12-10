@@ -1,8 +1,8 @@
 # Laravel Paytm Wallet With Scheduled Payment Option
 
-[![Latest Stable Version](https://poser.pugx.org/anandsiddharth/laravel-paytm-wallet/v/stable)](https://packagist.org/packages/anandsiddharth/laravel-paytm-wallet)
-[![Total Downloads](https://poser.pugx.org/anandsiddharth/laravel-paytm-wallet/downloads)](https://packagist.org/packages/anandsiddharth/laravel-paytm-wallet)
-[![License](https://poser.pugx.org/anandsiddharth/laravel-paytm-wallet/license)](https://packagist.org/packages/anandsiddharth/laravel-paytm-wallet)
+[![Latest Stable Version](https://poser.pugx.org/aotearoait/laravel-paytm-wallet/v/stable)](https://packagist.org/packages/aotearoait/laravel-paytm-wallet)
+[![Total Downloads](https://poser.pugx.org/aotearoait/laravel-paytm-wallet/downloads)](https://packagist.org/packages/aotearoait/laravel-paytm-wallet)
+[![License](https://poser.pugx.org/aotearoait/laravel-paytm-wallet/license)](https://packagist.org/packages/aotearoait/laravel-paytm-wallet)
 [![Join the chat at https://gitter.im/laravel-paytm-wallet/Lobby](https://badges.gitter.im/laravel-paytm-wallet/Lobby.svg)](https://gitter.im/laravel-paytm-wallet/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 For Laravel 5.0 and above
@@ -16,7 +16,7 @@ Laravel Paytm Wallet open-sourced software licensed under the [MIT license](http
 ## Getting Started
 To get started add the following package to your `composer.json` file using this command.
 
-    composer require anandsiddharth/laravel-paytm-wallet
+    composer require aotearoait/laravel-paytm-wallet
 
 ## Configuring
 **Note: For Laravel 5.5 and above auto-discovery takes care of below configuration.**
@@ -298,4 +298,4 @@ That's all folks!
 
 ## Support on Beerpay
 
-[![Beerpay](https://beerpay.io/anandsiddharth/laravel-paytm-wallet/badge.svg?style=beer-square)](https://beerpay.io/anandsiddharth/laravel-paytm-wallet)  [![Beerpay](https://beerpay.io/anandsiddharth/laravel-paytm-wallet/make-wish.svg?style=flat-square)](https://beerpay.io/anandsiddharth/laravel-paytm-wallet?focus=wish)
+[![Beerpay](https://beerpay.io/aotearoait/laravel-paytm-wallet/badge.svg?style=beer-square)](https://beerpay.io/aotearoait/laravel-paytm-wallet)  [![Beerpay](https://beerpay.io/aotearoait/laravel-paytm-wallet/make-wish.svg?style=flat-square)](https://beerpay.io/aotearoait/laravel-paytm-wallet?focus=wish)
