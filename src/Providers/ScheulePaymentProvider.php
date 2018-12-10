@@ -78,7 +78,7 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
                 'SUBS_START_DATE' => $this->parameters['subscription_start_date'], /// YYYY-MM-DD used to specify first payment, can be in future for trial scenarios
                 'SUBS_GRACE_DAYS' => $this->parameters['subscription_grace_days'],
             ];
-            array_push($params,$subscription_params);
+            $params = array_merge($params,$subscription_params);
 
         }
         if($this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
