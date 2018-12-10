@@ -66,6 +66,7 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
             'MOBILE_NO' => $this->parameters['mobile_number'],
             'EMAIL' => $this->parameters['email'],
         ];
+
         if($this->parameters['request_type'] == 'SUBSCRIPTION' || $this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
             $subscription_params = [
                 'SUBS_SERVICE_ID' => $this->parameters['subscription_id'], /// Subscription ID ALPHANUMERIC
@@ -78,6 +79,11 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
                 'SUBS_GRACE_DAYS' => $this->parameters['subscription_grace_days'],
             ];
             array_push($params,$subscription_params);
+
+        }
+        if($this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
+
+
 
         }
 

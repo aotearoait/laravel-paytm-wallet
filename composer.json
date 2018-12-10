@@ -1,6 +1,6 @@
 {
     "name": "aotearoait/laravel-paytm-wallet",
-    "version" : "1.0.2",
+    "version" : "1.0.3",
     "description": "Integrate paytm wallet easily with this package. This package uses official Paytm PHP SDK's and includes Subscription Service",
     "license": "MIT",
     "keywords": ["paytm wallet", "laravel"],
