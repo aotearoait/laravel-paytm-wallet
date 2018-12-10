@@ -1,4 +1,4 @@
-# Laravel Paytm Wallet
+# Laravel Paytm Wallet With Scheduled Payment Option
 
 [![Latest Stable Version](https://poser.pugx.org/anandsiddharth/laravel-paytm-wallet/v/stable)](https://packagist.org/packages/anandsiddharth/laravel-paytm-wallet)
 [![Total Downloads](https://poser.pugx.org/anandsiddharth/laravel-paytm-wallet/downloads)](https://packagist.org/packages/anandsiddharth/laravel-paytm-wallet)
@@ -8,7 +8,7 @@
 For Laravel 5.0 and above
 
 ## Introduction
-Integrate paytm wallet in your laravel application easily with this package. This package uses official Paytm PHP SDK's.
+This branch has been privaltely modified to allow scheduled transactions. This can not be done unless PayTM approve a Scheduled Payment Account which is not part of their normal accounts. Integrate paytm wallet in your laravel application easily with this package. This package uses official Paytm PHP SDK's.
 
 ## License
 Laravel Paytm Wallet open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
@@ -48,6 +48,14 @@ On your `config/services.php` add the following configuration
     'merchant_website' => 'YOUR_WEBSITE',
     'channel' => 'YOUR_CHANNEL',
     'industry_type' => 'YOUR_INDUSTRY_TYPE',
+    'SUBS_SERVICE_ID' => 'YOUR SUBSCRIPTION ID',
+    'SUBS_AMOUNT_TYPE' => 'SUBSCRIPTION TYPE',
+    'SUBS_FREQUENCY _UNIT' => 'SUBSCRIPTION FREQUENCY',
+    'SUBS_ENABLE_RETRY' => 'ALLOW RETRY',
+    'SUBS_EXPIRY_DATE' => 'SUBSCRIPTION EXPIRES ON',
+    'SUBS_MAX_AMOUNT' => 'MAX AMOUNT CHARGE PER TRANSACTION',
+    'SUBS_START_DATE' => 'START DATE',
+    'SUBS_GRACE_DAYS' => 'GRACE PERIOD DAYS'
 ],
 ```
 Note : All the credentials mentioned are provided by Paytm after signing up as merchant.
