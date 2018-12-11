@@ -71,8 +71,9 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
         if($this->parameters['request_type'] == 'SUBSCRIBE' || $this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
             $subscription_params = [
                 'SUBS_SERVICE_ID' => $this->parameters['subscription_id'], /// Subscription ID ALPHANUMERIC
-                'SUBS_AMOUNT_TYPE' => $this->parameters['subscription_type'], /// FIXED or VARIABLE,
-                'SUBS_FREQUENCY _UNIT' => $this->parameters['subscription_frequency'], /// Subscription frequecy DAY / MONTH / YEAR
+				'SUBS_AMOUNT_TYPE' => $this->parameters['subscription_type'], /// FIXED or VARIABLE,
+				'SUBS_FREQUENCY' => $this->parameters['subscription_frequency'],
+                'SUBS_FREQUENCY_UNIT' => $this->parameters['subscription_frequency_unit'], /// Subscription frequecy DAY / MONTH / YEAR
                 'SUBS_ENABLE_RETRY' => 1, /// Auto retry failed transaction
                 'SUBS_EXPIRY_DATE' => $this->parameters['subscription_expiry'], /// YYYY-MM-DD
                 'SUBS_MAX_AMOUNT' => $this->parameters['subscription_maximum_payment'], /// Maximum amount of a single payment
@@ -82,11 +83,11 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
             $params = array_merge($params,$subscription_params);
 
         }
-        if($this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
+        // if($this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
 
 
 
-        }
+        // }
 
 		return view('paytmwallet::form')->with('view', $this->view)->with('params', $params)->with('txn_url', $this->paytm_txn_url)->with('checkSum', getChecksumFromArray($params, $this->merchant_key));
 	}
