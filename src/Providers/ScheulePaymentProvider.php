@@ -83,11 +83,19 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
             $params = array_merge($params,$subscription_params);
 
         }
-        // if($this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
+        if($this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
 
+			$params = [
+				'REQUEST_TYPE' => $this->parameters['request_type'],
+				'MID' => $this->merchant_id,
+				'ORDER_ID' => $this->parameters['order'],
+				'SUBS_ID' => $this->$paramaters['subscription_id'],
+				'TXN_AMOUNT' => $this->parameters['amount']
+				
 
+			];
 
-        // }
+        }
 
 		return view('paytmwallet::form')->with('view', $this->view)->with('params', $params)->with('txn_url', $this->paytm_txn_url)->with('checkSum', getChecksumFromArray($params, $this->merchant_key));
 	}
