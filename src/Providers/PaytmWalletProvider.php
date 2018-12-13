@@ -45,7 +45,7 @@ class PaytmWalletProvider implements ProviderContract {
 	}
 
 	public function response(){
-		if($config['env'] == 'production'){
+		if(env('APP_ENV') == 'production'){
 			$checksum = $this->request->get('CHECKSUMHASH');
 			if(verifychecksum_e($this->request->all(), $this->merchant_key, $checksum) == "TRUE"){
 				return $this->response = $this->request->all();
