@@ -95,7 +95,21 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
 
 			];
 
-        }
+		}
+		
+		if($this->parameters['request_type']=='CANCEL' || $this->parameters['request_type']=='REFUND'){
+
+			$params = [
+				'TXNTYPE' => $this->parameters['request_type'],
+				'MID' => $this->merchant_id,
+				'ORDER_ID' => $this->parameters['order'],
+				'SUBS_ID' => $this->$paramaters['subscription_id'],
+				'REFUNDAMOUNT' => $parameters['refund_amount'],
+				'REFID' => $parameters['refund_id']
+				
+
+			];
+		}
 
 		return view('paytmwallet::form')->with('view', $this->view)->with('params', $params)->with('txn_url', $this->paytm_txn_url)->with('checkSum', getChecksumFromArray($params, $this->merchant_key));
 	}
