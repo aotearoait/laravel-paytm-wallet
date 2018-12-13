@@ -25,6 +25,14 @@ class PaytmWalletManager extends Manager implements Contracts\Factory{
 			);
 	}
 
+	protected function createRenewDriver(){
+		$this->config = $this->app['config']['services.paytm-wallet'];
+
+		return $this->buildProvider(
+			'Anand\LaravelPaytmWallet\Providers\RenewPaymentProvider',
+			$this->config
+			);
+	}
 
 	protected function createReceiveDriver(){
 		$this->config = $this->app['config']['services.paytm-wallet'];
