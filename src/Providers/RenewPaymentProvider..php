@@ -4,7 +4,7 @@ namespace Anand\LaravelPaytmWallet\Providers;
 use Anand\LaravelPaytmWallet\Facades\PaytmWallet;
 use Anand\LaravelPaytmWallet\Traits\HasTransactionStatus;
 use Illuminate\Http\Request;
-use Ixudra\Curl\Facades\Curl;
+
 
 class SchedulePaymentProvider extends PaytmWalletProvider{
 	use HasTransactionStatus;
