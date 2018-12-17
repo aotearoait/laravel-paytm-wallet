@@ -4,6 +4,7 @@ namespace Anand\LaravelPaytmWallet\Providers;
 use Anand\LaravelPaytmWallet\Facades\PaytmWallet;
 use Anand\LaravelPaytmWallet\Traits\HasTransactionStatus;
 use Illuminate\Http\Request;
+use Ixudra\Curl\Facades\Curl;
 
 class SchedulePaymentProvider extends PaytmWalletProvider{
 	use HasTransactionStatus;
@@ -57,7 +58,10 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
 			'TXN_AMOUNT' => $this->parameters['amount'],
         ];
 
-		return view('paytmwallet::form')->with('view', $this->view)->with('params', $params)->with('txn_url', $this->paytm_txn_url)->with('checkSum', getChecksumFromArray($params, $this->merchant_key));
+		return Curl::to('https://securegw-stage.paytm.in/theia/processTransaction')
+		->withData( $params )
+		->post();
+		//return view('paytmwallet::form')->with('view', $this->view)->with('params', $params)->with('txn_url', $this->paytm_txn_url)->with('checkSum', getChecksumFromArray($params, $this->merchant_key));
 	}
 
     public function getOrderId(){

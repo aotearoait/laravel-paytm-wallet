@@ -20,7 +20,7 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
             'callback_url' => NULL,
             'email' => NULL,
             'mobile_number' => NULL,
-            'subscription_grace_days' => 10,
+            'subscription_grace_days' => NULL,
             'subscription_start_date' => date("Y-m-d")
 		];
 
@@ -80,8 +80,22 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
                 'SUBS_START_DATE' => $this->parameters['subscription_start_date'], /// YYYY-MM-DD used to specify first payment, can be in future for trial scenarios
                 'SUBS_GRACE_DAYS' => $this->parameters['subscription_grace_days'],
             ];
-            $params = array_merge($params,$subscription_params);
+			$params = array_merge($params,$subscription_params);
+			
+			if(isset($this->parameters['subs_payment_mode']) && $this->parameters['subs_payment_mode'] == 'CC'){
 
+				$cc_params = [
+					'SUBS_PPI_ONLY' => 'N',
+					'SUBS_MAYMENT_MODE' => 'CC',
+					'AUTH_MODE' => '3D'
+				];
+			}
+			else{
+				$cc_params = [
+					'SUBS_PPI_ONLY' => 'Y'
+				];
+			}
+			$params = array_merge($params,$cc_params);
         }
         if($this->parameters['request_type'] == 'RENEW_SUBSCRIPTION'){
 
