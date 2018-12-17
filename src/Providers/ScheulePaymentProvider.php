@@ -86,7 +86,7 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
 
 				$cc_params = [
 					'SUBS_PPI_ONLY' => 'N',
-					'SUBS_MAYMENT_MODE' => 'CC',
+					'SUBS_PAYMENT_MODE' => 'CC',
 					'AUTH_MODE' => '3D'
 				];
 			}
