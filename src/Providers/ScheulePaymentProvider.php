@@ -82,7 +82,7 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
             ];
 			$params = array_merge($params,$subscription_params);
 			
-			if(isset($this->parameters['subs_payment_mode']) && $this->parameters['subs_payment_mode'] == 'CC'){
+			if(isset($this->parameters['subs_payment_mode']) && $this->parameters['subscription_payment_mode'] == 'CC'){
 
 				$cc_params = [
 					'SUBS_PPI_ONLY' => 'N',
