@@ -103,7 +103,7 @@ class SchedulePaymentProvider extends PaytmWalletProvider{
 				'REQUEST_TYPE' => $this->parameters['request_type'],
 				'MID' => $this->merchant_id,
 				'ORDER_ID' => $this->parameters['order'],
-				'SUBS_ID' => $this->$paramaters['subscription_id'],
+				'SUBS_ID' => $this->$parameters['subscription_id'],
 				'TXN_AMOUNT' => $this->parameters['amount']
 				
 
