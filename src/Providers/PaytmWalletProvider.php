@@ -25,7 +25,7 @@ class PaytmWalletProvider implements ProviderContract {
 	public function __construct(Request $request, $config){
 		$this->request = $request;
 		
-		if ($config['env'] == 'production') {
+		if (env('APP_ENV') == 'production') {
 			$domain = 'securegw.paytm.in';
 		}else{
 			$domain = 'securegw-stage.paytm.in';
