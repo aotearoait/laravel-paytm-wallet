@@ -25,10 +25,11 @@ class PaytmWalletProvider implements ProviderContract {
 	public function __construct(Request $request, $config){
 		$this->request = $request;
 		
-		if ($config['env'] == 'production') {
-			$domain = 'securegw.paytm.in';
-		}else{
+		if ($config['env'] == 'local' || $config['env']=='development') {
 			$domain = 'securegw-stage.paytm.in';
+		}else{
+			$domain = 'securegw.paytm.in';
+			
 		}
 		$this->paytm_txn_url = 'https://'.$domain.'/theia/processTransaction';
 		$this->paytm_sub_txn_url = 'https://'.$domain.'/theia/processTransaction';
