@@ -19,14 +19,7 @@ class ReceivePaymentProvider extends PaytmWalletProvider{
 			'amount' => NULL,
             'callback_url' => NULL,
             'email' => NULL,
-			'mobile_number' => NULL,
-			'subscription_id' => NULL,
-			'subscription_type' => NULL,
-			'subscription_frequency' => NULL,
-			'subscription_expiry' => NULL,
-			'subscription_maximum_payment' => NULL,
-			'subscription_start_date' => NULL,
-			'subscription_grace_days' => NULL
+			'mobile_number' => NULL
 		];
 
 		$_p = array_merge($defaults, $params);
